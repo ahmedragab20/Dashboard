@@ -1,6 +1,7 @@
 <template>
   <v-sheet>
     <div class="text-center text-h1 mb-5">Dummy</div>
+    <!--Countdown-->
     <v-card
       flat
       variant="tonal"
@@ -25,6 +26,7 @@
         </div>
       </v-card-subtitle>
     </v-card>
+    <!--Chart.js-->
     <v-card flat class="mt-8 mx-auto" max-width="500px">
       <div>
         <h1>Chart.js Example</h1>
@@ -42,6 +44,7 @@
         />
       </div>
     </v-card>
+    <!--Circular Progress-->
     <v-card flat class="mt-8 mx-auto" max-width="500px">
       <div class="d-flex justify-center align-center">
         <div class="text-center">
@@ -77,10 +80,20 @@
         </div>
       </div>
     </v-card>
+    <!--Sidebar-->
+    <Sidebar />
+    <!-- search input -->
+    <v-card max-width="320px" variant="flat" class="mx-auto">
+      <v-text-field
+        v-model="something"
+        prepend-icon="mdi-magnify"
+      ></v-text-field>
+    </v-card>
   </v-sheet>
 </template>
 
 <script setup>
+import Sidebar from "@/components/App/SideBar.vue";
 import Chart from "@/components/Charts/Chart.vue";
 import { startCountdown } from "@/utils/helpers";
 import { onMounted, ref } from "vue";
@@ -134,6 +147,8 @@ const chartOptions = ref({
   hoverOffset: 9,
   responsive: true,
 });
+
+const something = ref();
 
 onMounted(() => {
   startCountdown(targetDate.value, (remainingTime) => {
