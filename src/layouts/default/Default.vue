@@ -1,9 +1,35 @@
 <template>
   <v-app>
-    <default-view />
+    <!-- Drawer -->
+    <v-navigation-drawer v-model="drawer">
+      <v-btn color="primary" @click="toggleTheme"> toggle theme </v-btn>
+      <v-btn color="primary" variant="outlined" to="/dummy/blank">
+        go to dummy
+      </v-btn>
+    </v-navigation-drawer>
+    <!-- ToolBar -->
+    <v-app-bar elevation="0" density="compact" class="border-b">
+      <v-app-bar-nav-icon @click="drawer = !drawer"> </v-app-bar-nav-icon>
+
+      <v-toolbar-title>{{ dashboard.title }}</v-toolbar-title>
+    </v-app-bar>
+
+    <v-sheet>
+      <default-view />
+    </v-sheet>
   </v-app>
 </template>
 
 <script setup>
-  import DefaultView from './View.vue'
+import DefaultView from "@/layouts/default/View.vue";
+import { dashboard } from "@/locals/ar-KSA";
+import { ref } from "vue";
+import { useTheme } from "vuetify";
+const drawer = ref(false);
+
+const theme = useTheme();
+
+const toggleTheme = () => {
+  theme.global.name.value = theme.global.current.value.dark ? "light" : "dark";
+};
 </script>
