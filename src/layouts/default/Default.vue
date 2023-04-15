@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!-- Drawer -->
-    <v-navigation-drawer v-model="drawer">
+    <v-navigation-drawer v-model="drawer" expand-on-hover>
       <!-- close drawer -->
       <v-btn icon @click="drawer = false" variant="flat" rounded>
         <v-icon>mdi-close</v-icon>
@@ -13,7 +13,7 @@
       </v-btn>
     </v-navigation-drawer>
     <!-- ToolBar -->
-    <v-app-bar elevation="0" density="compact" class="mt-2">
+    <v-app-bar elevation="0" density="compact">
       <v-app-bar-nav-icon @click="drawer = !drawer"> </v-app-bar-nav-icon>
 
       <v-toolbar-title>{{ dashboard.title }}</v-toolbar-title>
@@ -23,16 +23,31 @@
     <v-card flat rounded="0" class="bg-transparent">
       <default-view />
     </v-card>
+
+    <!-- Footer -->
+    <v-footer elevation="0" class="bg-transparent d-flex justify-end" border>
+      <v-card flat rounded="0" class="bg-transparent">
+        <v-card-text class="text-end">
+          <v-btn icon @click="toggleTheme" variant="outlined">
+            <v-icon>mdi-lightbulb</v-icon>
+          </v-btn>
+          <div id="chat-bot">
+            <Chat />
+          </div>
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </v-app>
 </template>
 
 <script setup>
 import DefaultView from "@/layouts/default/View.vue";
 import { dashboard } from "@/locals/ar-KSA";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useTheme } from "vuetify";
+import Chat from "@/components/App/Chat.vue";
 
-const drawer = ref(true);
+const drawer = ref(false);
 
 const theme = useTheme();
 

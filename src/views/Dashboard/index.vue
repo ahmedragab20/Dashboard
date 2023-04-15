@@ -27,17 +27,16 @@
           </v-card>
         </template>
 
-        <v-card>
-          <v-card-text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </v-card-text>
-          <v-card-actions>
-            <v-btn color="primary" block @click="dialog = false"
-              >Close Dialog
-            </v-btn>
-          </v-card-actions>
-        </v-card>
+        <v-btn
+          @click="timeDialog = false"
+          rounded="xl"
+          width="15px"
+          height="40px"
+          class="pa-0"
+        >
+          x
+        </v-btn>
+        <Timer />
       </v-dialog>
     </v-row>
     <v-card flat class="mt-10 pa-3 bg-transparent">
@@ -64,30 +63,32 @@
           <v-col cols="12" sm="6">
             <!-- Circular Progress -->
             <v-card flat class="mt-8 mx-auto bg-transparent" max-width="500px">
-              <div class="d-flex justify-center align-center">
-                <div class="text-center">
+              <v-card-title class="text-primary">
+                {{ dashboard.governmentStandards }}
+              </v-card-title>
+              <v-card-subtitle>
+                {{ dashboard.governmentStandardsDescription }}
+              </v-card-subtitle>
+              <div class="d-flex justify-center mt-10">
+                <div
+                  v-for="(stander, i) in governmentStanders"
+                  :key="i"
+                  class="text-center"
+                >
                   <v-progress-circular
                     class="mx-3"
-                    model-value="100"
-                    color="blue-grey"
-                  ></v-progress-circular>
-
-                  <v-progress-circular
-                    class="mx-3"
-                    model-value="80"
-                    color="deep-orange-lighten-2"
-                  ></v-progress-circular>
-
-                  <v-progress-circular
-                    class="mx-3"
-                    model-value="60"
-                    color="green"
-                  ></v-progress-circular>
-                  <v-progress-circular
-                    model-value="20"
                     :size="128"
                     :width="12"
-                  ></v-progress-circular>
+                    :model-value="stander.value"
+                    :color="stander.color"
+                  >
+                    <span class="text-h5 font-weight-bold">
+                      {{ stander.value }}%
+                    </span>
+                  </v-progress-circular>
+                  <v-card-text class="text-h5">
+                    {{ stander.title }}
+                  </v-card-text>
                 </div>
               </div>
             </v-card>
@@ -130,10 +131,11 @@
   </v-container>
 </template>
 <script setup>
-import { dashboard } from "@/locals/ar-KSA";
+import { dashboard, general } from "@/locals/ar-KSA";
 import { ref, watch } from "vue";
 import SimpleCard from "@/views/Dashboard/-Components/SimpleCard.vue";
 import Chart from "@/components/Charts/Chart.vue";
+import Timer from "@/views/Dashboard/-Components/Timer.vue";
 
 const timeDialog = ref(false);
 
@@ -171,7 +173,7 @@ const dumpDataInArabic = ref([
     subtitle: "اجمالي اعداد المؤسسات الاهلية",
     value: 880,
     icon: "mdi-chart-line",
-    iconColor: "#adadbc",
+    iconColor: "#896FB6FF",
     border: "",
   },
   {
@@ -199,7 +201,6 @@ const chartTypes = ref([
   { title: "bar" },
   { title: "radar" },
   { title: "polarArea" },
-  { title: "bubble" },
   { title: "scatter" },
 ]);
 const chartType = ref("bar");
@@ -237,4 +238,10 @@ const filters = ref([
   { title: "يومي" },
 ]);
 const selectedFilter = ref();
+
+const governmentStanders = ref([
+  { title: "مكتملة", value: 40, color: "#45a2ff" },
+  { title: "جارية", value: 20, color: "#a39714" },
+  { title: "متوقفة", value: 10, color: "#ff1f62" },
+]);
 </script>
