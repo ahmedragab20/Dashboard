@@ -1,47 +1,105 @@
 <template>
-  <v-list max-width="320px" class="mx-auto my-10" flat color="grey-lighten-4">
-    <template v-for="(link, i) in sidebarLinks" :key="i">
-      <v-list-item :value="link" active-color="primary">
-        <v-list-item-title
-          v-if="link?.url"
-          variant="text"
-          block
-          v-text="link.name"
-        ></v-list-item-title>
-      </v-list-item>
-      <v-list-group v-if="link.sublinks?.length" value="Users">
-        <template v-slot:activator="{ props }">
-          <v-list-item
-            v-bind="props"
-            prepend-icon="mdi-account-circle"
-            title="Users"
-          ></v-list-item>
-          <v-list-item
-            v-for="(sublink, i) in link.sublinks"
-            :key="i"
-            :title="sublink.name"
-            :value="sublink.name"
-          ></v-list-item>
+  <v-card
+    :max-width="maxWidth"
+    :color="mainColor"
+    :height="height"
+    :class="extraClasses"
+    rounded="0"
+    flat
+  >
+    <v-list v-model:opened="open">
+      <template v-for="(link, i) in sidebarLinks" :key="i">
+        <template v-if="!link.children?.length">
+          <v-list-item :value="link" active-color="white" rounded="rounded">
+            <template v-slot:prepend>
+              <v-icon :icon="link.icon"></v-icon>
+            </template>
+
+            <v-list-item-title v-text="link.name"></v-list-item-title>
+          </v-list-item>
         </template>
-      </v-list-group>
-    </template>
-  </v-list>
+        <template v-else-if="link.children?.length">
+          <v-list-group :value="`${link.name}`">
+            <template v-slot:activator="{ props }">
+              <v-list-item
+                active-color="primary"
+                rounded="xl"
+                variant="elevated"
+                v-bind="props"
+                :title="`${link.name}`"
+                :prepend-icon="link.icon"
+              ></v-list-item>
+            </template>
+
+            <v-list-item
+              v-for="(childLink, i) in link.children"
+              :key="i"
+              rounded="rounded"
+              :title="childLink.name"
+              :prepend-icon="childLink.icon"
+              :value="childLink.name"
+            ></v-list-item>
+          </v-list-group>
+        </template>
+      </template>
+    </v-list>
+  </v-card>
 </template>
 <script setup>
 import { ref } from "vue";
-const sidebarLinks = ref([
-  { name: "Home", url: "/" },
-  { name: "About Us", url: "/about" },
-  {
-    name: "Products",
-    expand: false,
-    sublinks: [
-      { name: "Product 1", url: "/product/1" },
-      { name: "Product 2", url: "/product/2" },
-      { name: "Product 3", url: "/product/3" },
-    ],
+
+const props = defineProps({
+  maxWidth: {
+    type: String || Number,
+    default: "100%",
   },
-  { name: "Contact Us", url: "/contact" },
+  mainColor: {
+    type: String,
+    default: "",
+  },
+  extraClasses: {
+    type: String,
+    default: "",
+  },
+  height: {
+    type: String || Number,
+    default: "100vh",
+  },
+});
+
+const sidebarLinks = ref([
+  {
+    name: "Dashboard",
+    url: "/dashboard",
+    children: [],
+    expand: false,
+    icon: "mdi-home",
+  },
+  {
+    name: "Users",
+    url: "/users",
+    icon: "mdi-account",
+    children: [
+      {
+        name: "User 1",
+        url: "/users/1",
+        mdIcon: "mdi-home",
+      },
+      {
+        name: "User 2",
+        url: "/users/2",
+        mdIcon: "mdi-home",
+      },
+    ],
+    expand: false,
+  },
+  {
+    name: "Credits & Cards",
+    url: "/credits",
+    children: [],
+    expand: false,
+    icon: "mdi-credit-card",
+  },
 ]);
 
 const toggleExpand = (index) => {
@@ -49,4 +107,6 @@ const toggleExpand = (index) => {
   sidebarLinks.value[index].expand = !sidebarLinks.value[index].expand;
   console.log(sidebarLinks.value[index].expand);
 };
+
+const open = ref([]);
 </script>

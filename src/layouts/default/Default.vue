@@ -1,19 +1,8 @@
 <template>
   <v-app>
     <!-- Drawer -->
-    <v-navigation-drawer v-model="drawer" expand-on-hover>
-      <!-- close drawer -->
-      <v-btn icon @click="drawer = false" variant="flat" rounded>
-        <v-icon>mdi-close</v-icon>
-      </v-btn>
-      <br />
-      <v-btn color="primary" @click="toggleTheme"> toggle theme</v-btn>
-      <v-btn color="primary" variant="outlined" to="/dummy/blank">
-        go to dummy
-      </v-btn>
-      <v-btn color="primary" variant="outlined" to="/credits">
-        go to credits
-      </v-btn>
+    <v-navigation-drawer v-model="drawer">
+      <SideBar />
     </v-navigation-drawer>
     <!-- ToolBar -->
     <v-app-bar elevation="0" density="compact">
@@ -49,6 +38,7 @@ import { dashboard } from "@/locals/ar-KSA";
 import { onMounted, ref } from "vue";
 import { useTheme } from "vuetify";
 import Chat from "@/components/App/Chat.vue";
+import SideBar from "@/components/App/SideBar.vue";
 
 const drawer = ref(false);
 

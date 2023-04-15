@@ -81,7 +81,7 @@
       </div>
     </v-card>
     <!--Sidebar-->
-    <Sidebar />
+    <Sidebar :max-width="320" extra-classes="mx-auto" />
     <!-- search input -->
     <v-card max-width="320px" variant="flat" class="mx-auto bg-transparent">
       <v-text-field
