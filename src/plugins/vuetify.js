@@ -21,8 +21,8 @@ export default createVuetify({
       },
       dark: {
         colors: {
-          background: "#131722",
-          primary: "#1B2130",
+          background: "#2121214C",
+          primary: "#de7274",
           // dark pink
           secondary: "#22ccff",
           accent: "#82B1FF",
