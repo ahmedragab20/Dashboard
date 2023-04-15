@@ -7,19 +7,24 @@ const routes = [
     children: [
       {
         path: "/",
-        name: "Dashboard",
+        name: "dashboard",
         component: () => import("@/views/Dashboard/index.vue"),
       },
     ],
   },
   {
-    path: "/dummy",
+    path: "/blank",
     component: () => import("@/layouts/Dummy/Blank.vue"),
     children: [
       {
         path: "/dummy/blank",
         name: "blank-dummy",
         component: () => import("@/views/Dummy/index.vue"),
+      },
+      {
+        path: "/auth/login",
+        name: "login",
+        component: () => import("@/views/auth/login"),
       },
     ],
   },

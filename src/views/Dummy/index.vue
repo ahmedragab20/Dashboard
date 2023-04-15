@@ -27,7 +27,7 @@
       </v-card-subtitle>
     </v-card>
     <!--Chart.js-->
-    <v-card flat class="mt-8 mx-auto" max-width="500px">
+    <v-card flat class="mt-8 mx-auto bg-transparent" max-width="500px">
       <div>
         <h1>Chart.js Example</h1>
         <div>
@@ -45,7 +45,7 @@
       </div>
     </v-card>
     <!--Circular Progress-->
-    <v-card flat class="mt-8 mx-auto" max-width="500px">
+    <v-card flat class="mt-8 mx-auto bg-transparent" max-width="500px">
       <div class="d-flex justify-center align-center">
         <div class="text-center">
           <v-progress-circular
@@ -83,11 +83,24 @@
     <!--Sidebar-->
     <Sidebar />
     <!-- search input -->
-    <v-card max-width="320px" variant="flat" class="mx-auto">
+    <v-card max-width="320px" variant="flat" class="mx-auto bg-transparent">
       <v-text-field
         v-model="something"
         prepend-icon="mdi-magnify"
       ></v-text-field>
+    </v-card>
+    <!-- Progress -->
+    <v-card flat class="mt-8 mx-auto bg-transparent" max-width="500px">
+      <div class="d-flex">
+        <Progress
+          :percentage="99"
+          :size="250"
+          :stroke-width="12"
+          stroke-color="#4CAF50"
+        >
+          <div style="text-align: center; font-size: 20px">75%</div>
+        </Progress>
+      </div>
     </v-card>
   </v-sheet>
 </template>
@@ -95,8 +108,10 @@
 <script setup>
 import Sidebar from "@/components/App/SideBar.vue";
 import Chart from "@/components/Charts/Chart.vue";
+import Progress from "@/components/Reusable/Progress.vue";
 import { startCountdown } from "@/utils/helpers";
 import { onMounted, ref } from "vue";
+
 const targetDate = ref(new Date(2023, 3, 20)); // April 20, 2023
 
 const time = ref({
@@ -149,6 +164,14 @@ const chartOptions = ref({
 });
 
 const something = ref();
+
+const percentages = ref([
+  { value: 5, color: "red" },
+  { value: 95, color: "green" },
+  // { value: 15, color: "blue" },
+  // { value: 10, color: "yellow" },
+  // { value: 1, color: "orange" },
+]);
 
 onMounted(() => {
   startCountdown(targetDate.value, (remainingTime) => {
