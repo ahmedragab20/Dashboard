@@ -5,14 +5,15 @@
       <SideBar />
     </v-navigation-drawer>
     <!-- ToolBar -->
-    <v-app-bar elevation="0" density="compact">
-      <v-app-bar-nav-icon @click="drawer = !drawer"> </v-app-bar-nav-icon>
 
-      <v-toolbar-title>{{ dashboard.title }}</v-toolbar-title>
+    <v-app-bar elevation="0">
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+
+      <Header />
     </v-app-bar>
 
     <!-- Content -->
-    <v-card flat rounded="0" class="bg-transparent">
+    <v-card flat rounded="0" class="bg-transparent mt-7">
       <default-view />
     </v-card>
 
@@ -34,6 +35,7 @@
 
 <script setup>
 import DefaultView from "@/layouts/default/View.vue";
+import Header from "@/components/App/Header.vue";
 import { dashboard } from "@/locals/ar-KSA";
 import { onMounted, ref } from "vue";
 import { useTheme } from "vuetify";
@@ -51,4 +53,8 @@ const toggleTheme = () => {
 const log = (theme) => {
   console.log(theme);
 };
+
+onMounted(() => {
+  theme.global.name.value = "dark";
+});
 </script>
