@@ -1,11 +1,11 @@
 export const general = {
-  appName: "هيئة الأرصاد الجوية",
-  appDescription: "تطبيق الأرصاد الجوية",
+  appName: "هيئة الحكومة الرقمية",
+  appDescription: "تطبيق هيئة الحكومة الرقمية",
   companyName: "ويبكو",
   close: "إغلاق",
 };
 export const dashboard = {
-  title: "هيئة الأرصاد الجوية",
+  title: "هيئة الحكومة الرقمية",
   homepage: "الصفحة الرئيسية",
   welcomeToTheHomepage: "مرحبا بك في الصفحة الرئيسية",
   weHappyThatYourBack: "ان شاء الله يومك سعيد",
@@ -32,4 +32,16 @@ export const timer = {
   hours: "ساعات",
   minutes: "دقائق",
   seconds: "ثواني",
+};
+
+export const credits = {
+  showFullDetails: "عرض كل التفاصيل",
+  hideFullDetails: "إخفاء التفاصيل",
+  completionRate: "معدل الانجاز",
+  expertsNumber: "عدد الخبراء",
+  researchersNumber: "عدد المدققين",
+  standardsNumber: "عدد المعايير",
+  lastVisit: "آخر تواجد",
+  lastEdit: "آخر تعديل",
+  rate: "التقييم",
 };
