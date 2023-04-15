@@ -13,7 +13,7 @@
       </v-btn>
     </v-navigation-drawer>
     <!-- ToolBar -->
-    <v-app-bar elevation="0" density="compact" class="mt-2 bg-transparent">
+    <v-app-bar elevation="0" density="compact" class="mt-2">
       <v-app-bar-nav-icon @click="drawer = !drawer"> </v-app-bar-nav-icon>
 
       <v-toolbar-title>{{ dashboard.title }}</v-toolbar-title>

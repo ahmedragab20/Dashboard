@@ -171,7 +171,7 @@ const dumpDataInArabic = ref([
     subtitle: "اجمالي اعداد المؤسسات الاهلية",
     value: 880,
     icon: "mdi-chart-line",
-    iconColor: "#145944",
+    iconColor: "#adadbc",
     border: "",
   },
   {
@@ -180,7 +180,7 @@ const dumpDataInArabic = ref([
     subtitle: "اجمالي اعداد المصالح الحكومية",
     value: 92,
     icon: "mdi-chart-donut",
-    iconColor: "#a31414",
+    iconColor: "#de7274",
     border: "",
   },
   {
