@@ -13,8 +13,8 @@
       </v-btn>
     </v-navigation-drawer>
     <!-- ToolBar -->
-    <v-app-bar elevation="0" density="compact" class="border-b">
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+    <v-app-bar elevation="0" density="compact" class="mt-2 bg-transparent">
+      <v-app-bar-nav-icon @click="drawer = !drawer"> </v-app-bar-nav-icon>
 
       <v-toolbar-title>{{ dashboard.title }}</v-toolbar-title>
     </v-app-bar>
@@ -44,14 +44,3 @@ const log = (theme) => {
   console.log(theme);
 };
 </script>
-<style>
-/* Light mode */
-.v-theme--light {
-  --v-background-base: #f5f5f5; /* Set background color */
-}
-
-/* Dark mode */
-.v-theme--dark {
-  --v-background-base: #121212; /* Set background color */
-}
-</style>

@@ -9,16 +9,27 @@ export default createVuetify({
     themes: {
       light: {
         colors: {
-          background: "#f5f5f5",
+          background: "#F7F7F7",
           primary: "#3d3870",
           secondary: "#5CBBF6",
+          accent: "#048ba8",
+          error: "#ef476f",
+          info: "#2196F3",
+          success: "#06d6a0",
+          warning: "#ffd166",
         },
       },
       dark: {
         colors: {
-          background: "#1e1e1e",
-          primary: "#ff8c00",
+          background: "#131722",
+          primary: "#1B2130",
+          // dark pink
           secondary: "#22ccff",
+          accent: "#82B1FF",
+          error: "#FF5252",
+          info: "#2196F3",
+          success: "#4CAF50",
+          warning: "#FFC107",
         },
       },
     },
