@@ -11,34 +11,48 @@
       <v-btn color="primary" variant="outlined" to="/dummy/blank">
         go to dummy
       </v-btn>
+      <v-btn color="primary" variant="outlined" to="/credits">
+        go to credits
+      </v-btn>
     </v-navigation-drawer>
     <!-- ToolBar -->
-    <v-app-bar
-      elevation="0"
-      density="compact"
-      class="mt-0 pa-6 pb-0 mb-9 bg-transparent"
-    >
-      <!-- <v-app-bar-nav-icon @click="drawer = !drawer"> </v-app-bar-nav-icon>
-      
-      <v-toolbar-title>{{ dashboard.title }}</v-toolbar-title> -->
-      <layoutHeader></layoutHeader>
+
+    <v-app-bar elevation="0">
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+
+      <Header />
     </v-app-bar>
 
     <!-- Content -->
     <v-card flat rounded="0" class="bg-transparent mt-7">
       <default-view />
     </v-card>
+
+    <!-- Footer -->
+    <v-footer elevation="0" class="bg-transparent d-flex justify-end" border>
+      <v-card flat rounded="0" class="bg-transparent">
+        <v-card-text class="text-end">
+          <v-btn icon @click="toggleTheme" variant="outlined">
+            <v-icon>mdi-lightbulb</v-icon>
+          </v-btn>
+          <div id="chat-bot">
+            <Chat />
+          </div>
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </v-app>
 </template>
 
 <script setup>
 import DefaultView from "@/layouts/default/View.vue";
-import layoutHeader from "@/components/layout/layout-header.vue";
+import Header from "@/components/App/Header.vue";
 import { dashboard } from "@/locals/ar-KSA";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useTheme } from "vuetify";
+import Chat from "@/components/App/Chat.vue";
 
-const drawer = ref(true);
+const drawer = ref(false);
 
 const theme = useTheme();
 
@@ -49,4 +63,8 @@ const toggleTheme = () => {
 const log = (theme) => {
   console.log(theme);
 };
+
+onMounted(() => {
+  theme.global.name.value = "dark";
+});
 </script>

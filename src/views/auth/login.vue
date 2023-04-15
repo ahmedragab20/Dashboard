@@ -1,16 +1,20 @@
 <template>
-  <v-sheet max-width="1224px" min-height="100vh" class="mx-auto">
+  <v-card
+    max-width="1224px"
+    min-height="100vh"
+    class="mx-auto bg-transparent"
+    flat
+  >
     <v-container>
       <v-row class="h-screen" align="center">
         <v-card
           flat
-          color="grey-lighten-5"
           height="70vh"
           width="50%"
           rounded="0"
           class="d-flex flex-column justify-center pa-8"
         >
-          <v-card flat color="grey-lighten-5" class="bg-transparent">
+          <v-card flat class="bg-transparent">
             <v-card flat class="mb-3 bg-transparent">
               <v-card-title class="text-h3 mb-3">
                 {{ auth.login }}
@@ -25,7 +29,6 @@
                 :label="auth.email"
                 color="primary"
                 :rules="emailRules"
-                bg-color="white"
                 variant="outlined"
               ></v-text-field>
 
@@ -35,8 +38,8 @@
                 :type="showPassword ? 'text' : 'password'"
                 color="primary"
                 :rules="passwordRules"
-                bg-color="white"
                 variant="outlined"
+                class="mt-3"
               >
                 <template #append-inner>
                   <v-icon
@@ -81,7 +84,7 @@
         </v-card>
       </v-row>
     </v-container>
-  </v-sheet>
+  </v-card>
 </template>
 <script setup>
 import { auth, general } from "@/locals/ar-KSA";
