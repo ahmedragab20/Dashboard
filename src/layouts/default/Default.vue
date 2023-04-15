@@ -13,14 +13,19 @@
       </v-btn>
     </v-navigation-drawer>
     <!-- ToolBar -->
-    <v-app-bar elevation="0" density="compact" class="mt-2">
-      <v-app-bar-nav-icon @click="drawer = !drawer"> </v-app-bar-nav-icon>
-
-      <v-toolbar-title>{{ dashboard.title }}</v-toolbar-title>
+    <v-app-bar
+      elevation="0"
+      density="compact"
+      class="mt-0 pa-6 pb-0 mb-9 bg-transparent"
+    >
+      <!-- <v-app-bar-nav-icon @click="drawer = !drawer"> </v-app-bar-nav-icon>
+      
+      <v-toolbar-title>{{ dashboard.title }}</v-toolbar-title> -->
+      <layoutHeader></layoutHeader>
     </v-app-bar>
 
     <!-- Content -->
-    <v-card flat rounded="0" class="bg-transparent">
+    <v-card flat rounded="0" class="bg-transparent mt-7">
       <default-view />
     </v-card>
   </v-app>
@@ -28,6 +33,7 @@
 
 <script setup>
 import DefaultView from "@/layouts/default/View.vue";
+import layoutHeader from "@/components/layout/layout-header.vue";
 import { dashboard } from "@/locals/ar-KSA";
 import { ref } from "vue";
 import { useTheme } from "vuetify";
