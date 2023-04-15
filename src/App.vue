@@ -23,7 +23,7 @@ onBeforeMount(() => {
   // }
 });
 </script>
-<style scoped>
+<style>
 .rout-enter-from,
 .rout-leave-to {
   opacity: 0;
