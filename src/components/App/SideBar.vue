@@ -7,10 +7,10 @@
     rounded="0"
     flat
   >
-    <v-list v-model:opened="open">
+    <v-list v-model:opened="open" class="pa-3">
       <template v-for="(link, i) in sidebarLinks" :key="i">
         <template v-if="!link.children?.length">
-          <v-list-item :value="link" active-color="white" rounded="rounded">
+          <v-list-item :value="link" active-color="primary" rounded="rounded">
             <template v-slot:prepend>
               <v-icon :icon="link.icon"></v-icon>
             </template>
@@ -23,8 +23,7 @@
             <template v-slot:activator="{ props }">
               <v-list-item
                 active-color="primary"
-                rounded="xl"
-                variant="elevated"
+                rounded="lg"
                 v-bind="props"
                 :title="`${link.name}`"
                 :prepend-icon="link.icon"
