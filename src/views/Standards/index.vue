@@ -27,14 +27,40 @@
               <span class="mx-1 text-primary">عرض الكل</span>
               <v-icon color="primary"> mdi-filter-variant</v-icon>
             </v-btn>
-            <v-btn flat link class="bg-transparent">
-              <span class="text-info mx-1"> الجهه الحكومية</span>
-              <v-icon color="info"> mdi-filter-variant </v-icon>
-            </v-btn>
-            <v-btn flat link class="bg-transparent">
-              <span class="text-success mx-1"> الحالة</span>
-              <v-icon color="success"> mdi-filter-variant </v-icon>
-            </v-btn>
+            <v-menu>
+              <template v-slot:activator="{ props }">
+                <v-btn flat link v-bind="props" class="bg-transparent">
+                  <span class="text-info mx-1"> الجهه الحكومية</span>
+                  <v-icon color="info"> mdi-filter-variant </v-icon>
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item
+                  v-for="(item, index) in gov"
+                  :key="index"
+                  :value="item"
+                >
+                  <v-list-item-title>{{ item }}</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+            <v-menu>
+              <template v-slot:activator="{ props }">
+                <v-btn v-bind="props" flat link class="bg-transparent">
+                  <span class="text-success mx-1"> الحالة</span>
+                  <v-icon color="success"> mdi-filter-variant </v-icon>
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item
+                  v-for="(item, index) in statuses"
+                  :key="index"
+                  :value="item"
+                >
+                  <v-list-item-title>{{ item }}</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
           </div>
         </v-col>
         <v-col cols="12">
@@ -115,6 +141,8 @@
 </template>
 <script setup>
 import { ref } from "vue";
+const gov = ref(["امانة الرياض", "وزارة الصحة", "أمانة جدة"]);
+const statuses = ref(["مكتمل", "قيد العمل", "ملغي"]);
 const items = ref([
   {
     standard: "معيار الامن والامان",
