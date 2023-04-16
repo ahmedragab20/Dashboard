@@ -17,6 +17,7 @@ export default createVuetify({
           info: "#2196F3",
           success: "#06d6a0",
           warning: "#ffd166",
+          tableRow1: "#eee",
         },
       },
       dark: {
@@ -30,6 +31,7 @@ export default createVuetify({
           info: "#2196F3",
           success: "#4CAF50",
           warning: "#FFC107",
+          tableRow1: "#eee",
         },
       },
     },
