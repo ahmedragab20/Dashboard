@@ -55,6 +55,6 @@ const log = (theme) => {
 };
 
 onMounted(() => {
-  theme.global.name.value = "dark";
+  // theme.global.name.value = "dark";
 });
 </script>

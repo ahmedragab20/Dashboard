@@ -10,7 +10,12 @@
     <v-list v-model:opened="open" class="pa-3">
       <template v-for="(link, i) in sidebarLinks" :key="i">
         <template v-if="!link.children?.length">
-          <v-list-item :value="link" active-color="primary" rounded="rounded">
+          <v-list-item
+            :to="link.url"
+            :value="link"
+            :color="isActive(link) ? 'primary' : ''"
+            rounded="rounded"
+          >
             <template v-slot:prepend>
               <v-icon :icon="link.icon"></v-icon>
             </template>
@@ -22,7 +27,8 @@
           <v-list-group :value="`${link.name}`">
             <template v-slot:activator="{ props }">
               <v-list-item
-                active-color="primary"
+                :to="isActive(link) ? '' : link.url"
+                :color="isActive(link) ? 'primary' : ''"
                 rounded="lg"
                 v-bind="props"
                 :title="`${link.name}`"
@@ -30,14 +36,16 @@
               ></v-list-item>
             </template>
 
-            <v-list-item
-              v-for="(childLink, i) in link.children"
-              :key="i"
-              rounded="rounded"
-              :title="childLink.name"
-              :prepend-icon="childLink.icon"
-              :value="childLink.name"
-            ></v-list-item>
+            <template v-for="(childLink, i) in link.children" :key="i">
+              <v-list-item
+                :to="childLink.url"
+                :color="isActive(link) ? 'primary' : ''"
+                rounded="rounded"
+                :value="link.name"
+                :title="childLink.name"
+                :prepend-icon="childLink.icon"
+              ></v-list-item>
+            </template>
           </v-list-group>
         </template>
       </template>
@@ -45,7 +53,8 @@
   </v-card>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { useRouter, useRoute } from "vue-router";
 
 const props = defineProps({
   maxWidth: {
@@ -66,46 +75,61 @@ const props = defineProps({
   },
 });
 
+const router = useRouter();
+const route = useRoute();
+
 const sidebarLinks = ref([
   {
     name: "Dashboard",
-    url: "/dashboard",
+    url: "/",
     children: [],
-    expand: false,
     icon: "mdi-home",
   },
   {
-    name: "Users",
-    url: "/users",
-    icon: "mdi-account",
+    name: "Credits & Standards & Questions",
+    url: "",
+    icon: "mdi-credit-card",
     children: [
       {
-        name: "User 1",
-        url: "/users/1",
-        mdIcon: "mdi-home",
+        name: "Credits",
+        url: "/credits",
+        icon: "mdi-credit-card",
       },
       {
-        name: "User 2",
-        url: "/users/2",
-        mdIcon: "mdi-home",
+        name: "Standards",
+        url: "/credits/standards",
+        icon: "mdi-ruler",
+      },
+      {
+        name: "Questions",
+        url: "/credits/questions",
+        icon: "mdi-comment-question-outline",
       },
     ],
-    expand: false,
   },
   {
-    name: "Credits & Cards",
-    url: "/credits",
+    name: "Components ",
+    url: "/dummy/blank",
     children: [],
-    expand: false,
-    icon: "mdi-credit-card",
+    icon: "mdi-contrast-box",
   },
 ]);
 
-const toggleExpand = (index) => {
-  console.log(index);
-  sidebarLinks.value[index].expand = !sidebarLinks.value[index].expand;
-  console.log(sidebarLinks.value[index].expand);
+const open = ref([]);
+
+watch(open, (val) => {
+  console.log(val);
+});
+
+const routeTo = (link) => {
+  if (!link.url) return;
+
+  router.push(link.url);
 };
 
-const open = ref([]);
+const isActive = (link) => {
+  if (!link.url) return;
+
+  return route.path === link.url;
+};
 </script>
