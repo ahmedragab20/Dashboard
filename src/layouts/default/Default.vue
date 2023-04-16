@@ -14,9 +14,6 @@
       <v-btn color="primary" variant="outlined" to="/credits">
         go to credits
       </v-btn>
-      <v-btn color="primary" variant="outlined" to="/standards">
-        go to standards
-      </v-btn>
     </v-navigation-drawer>
     <!-- ToolBar -->
 
