@@ -13,10 +13,10 @@
             <div class="d-flex align-center" style="gap: 20px">
               <v-btn color="primary" flat link>
                 <span class="mx-2">اضافة سؤال جديد</span>
-                <v-icon> mdi-plus </v-icon>
+                <v-icon> mdi-plus</v-icon>
               </v-btn>
               <v-btn variant="outlined" icon size="x-small" to="/">
-                <v-icon> mdi-home </v-icon>
+                <v-icon> mdi-home</v-icon>
               </v-btn>
             </div>
           </div>
@@ -41,7 +41,7 @@
                 :items="['امانة الرياض', 'امانة جده', 'وزارة الدفاع']"
               ></v-select>
             </v-col>
-            <v-col cols="4"> </v-col>
+            <v-col cols="4"></v-col>
             <v-col cols="4">
               <v-text-field
                 density="compact"
@@ -86,9 +86,9 @@
               {{ item.ques }}
             </v-card-item>
             <v-card-item lass="my-0">
-              <v-icon color="error" style="transform: rotate(45deg)"
-                >mdi-pin</v-icon
-              >
+              <v-icon color="error" style="transform: rotate(45deg)">
+                mdi-pin
+              </v-icon>
             </v-card-item>
             <v-card-text class="text-grey-darken-3"
               >{{ item.ans }}
@@ -107,9 +107,9 @@
                       {{ item.grade }}%
                     </span>
                   </v-progress-circular>
-                  <v-card-text class="text-h6 px-0">{{
-                    item.gradeTitle
-                  }}</v-card-text>
+                  <v-card-text class="text-h6 px-0"
+                    >{{ item.gradeTitle }}
+                  </v-card-text>
                 </div>
                 <v-spacer></v-spacer>
                 <span
