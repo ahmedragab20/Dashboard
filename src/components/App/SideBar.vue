@@ -8,6 +8,9 @@
     flat
   >
     <v-list v-model:opened="open" class="pa-3">
+      <v-sheet class="bg-transparent px-3 pb-5">
+        <component :is="logo" />
+      </v-sheet>
       <template v-for="(link, i) in sidebarLinks" :key="i">
         <template v-if="!link.children?.length">
           <v-list-item
@@ -53,8 +56,12 @@
   </v-card>
 </template>
 <script setup>
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import { useTheme } from "vuetify";
+
+import Logo from "@/assets/logo.vue";
+import LogoDark from "@/assets/logo-dark.vue";
 
 const props = defineProps({
   maxWidth: {
@@ -77,6 +84,12 @@ const props = defineProps({
 
 const router = useRouter();
 const route = useRoute();
+const theme = useTheme();
+
+const isDarkModeOn = computed(() => {
+  // check on the theme
+  return theme.global.name.value === "dark";
+});
 
 const sidebarLinks = ref([
   {
@@ -85,27 +98,29 @@ const sidebarLinks = ref([
     children: [],
     icon: "mdi-home",
   },
+  // {
+  //   name: "البطاقات والمعايير",
+  //   url: "",
+  //   icon: "mdi-credit-card",
+  //   children: [],
+  // },
   {
-    name: "Credits & Standards & Questions",
-    url: "",
+    name: "البطاقات",
+    url: "/credits",
     icon: "mdi-credit-card",
-    children: [
-      {
-        name: "Credits",
-        url: "/credits",
-        icon: "mdi-credit-card",
-      },
-      {
-        name: "Standards",
-        url: "/credits/standards",
-        icon: "mdi-ruler",
-      },
-      {
-        name: "Questions",
-        url: "/credits/questions",
-        icon: "mdi-comment-question-outline",
-      },
-    ],
+    children: [],
+  },
+  {
+    name: "المعايير",
+    url: "/credits/standards",
+    icon: "mdi-ruler",
+    children: [],
+  },
+  {
+    name: "الأسئلة",
+    url: "/credits/questions",
+    icon: "mdi-comment-question-outline",
+    children: [],
   },
   {
     name: "Components ",
@@ -132,4 +147,8 @@ const isActive = (link) => {
 
   return route.path === link.url;
 };
+
+const logo = computed(() => {
+  return !isDarkModeOn.value ? LogoDark : Logo;
+});
 </script>

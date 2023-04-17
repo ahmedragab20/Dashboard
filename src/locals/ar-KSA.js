@@ -1,3 +1,5 @@
+export const ar = {};
+
 export const general = {
   appName: "هيئة الحكومة الرقمية",
   appDescription: "تطبيق هيئة الحكومة الرقمية",

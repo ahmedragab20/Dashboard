@@ -1,8 +1,8 @@
-// import { ar, en } from "@/locals/index"; // TODO: will back to it when we implement the localization
+// import ar from "@/plugins/vuetify-local-ar";
 // Styles
 import "@mdi/font/css/materialdesignicons.css";
 import { createVuetify } from "vuetify";
-import { fa } from "vuetify/locale";
+import { en } from "vuetify/locale";
 import "vuetify/styles";
 export default createVuetify({
   theme: {
@@ -37,9 +37,9 @@ export default createVuetify({
     },
   },
   locale: {
-    locale: "fa",
-    fallback: "fa",
-    messages: { fa },
-    rtl: { fa: true },
+    locale: "en",
+    fallback: "en",
+    messages: { en },
+    rtl: { en: true },
   },
 });

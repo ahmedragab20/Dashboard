@@ -33,3 +33,9 @@ export function startCountdown(targetDate, onTick) {
     }, 1000);
   });
 }
+export function makeItLikeVRow(el) {
+  el.classList.add("v-row");
+  el.classList.add("v-row--wrap");
+  el.classList.add("v-row--align-center");
+  el.classList.add("v-row--justify-start");
+}

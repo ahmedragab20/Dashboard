@@ -326,6 +326,11 @@ function-bind@^1.1.1:
   resolved "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
 
+gsap@^3.11.5:
+  version "3.11.5"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.11.5.tgz#97ef65091f43868be387803f9db277e8cd5bd041"
+  integrity sha512-Q89nKCLgoX5xUjznh9LcaIUkz54k1voNucT1Rpf9SJNFIQznBwFqt5qUUQbeVInFyN/n18OUJkpeI6CNEDt74w==
+
 has@^1.0.3:
   version "1.0.3"
   resolved "https://registry.npmjs.org/has/-/has-1.0.3.tgz"
@@ -472,6 +477,11 @@ upath@^2.0.1:
   resolved "https://registry.npmjs.org/upath/-/upath-2.0.1.tgz"
   integrity sha512-1uEe95xksV1O0CYKXo8vQvN1JEbtJp7lb7C5U9HMsIp6IVwntkH/oNUzyVNQSd4S1sYk2FpSSW44FqMc8qee5w==
 
+uuid@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
+  integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
+
 vite-plugin-css-injected-by-js@^2.2.0:
   version "2.4.0"
   resolved "https://registry.npmjs.org/vite-plugin-css-injected-by-js/-/vite-plugin-css-injected-by-js-2.4.0.tgz"
@@ -518,7 +528,7 @@ vue@^3.2.47:
 
 vuetify@^3.1.14:
   version "3.1.14"
-  resolved "https://registry.npmjs.org/vuetify/-/vuetify-3.1.14.tgz"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-3.1.14.tgz#6dac29bb54ce6eee97ff8df54dab431305aa38d4"
   integrity sha512-KpJH7CDyDwLjfLUkKgmijZ7WMBscuGTGKeO5pomerEWQiZ9X9bjHJTXdycqFX60QSl3AkrJeSIWW/l8nkxoslw==
 
 webfontloader@^1.6.28:

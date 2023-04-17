@@ -5,7 +5,7 @@
         <v-col cols="12">
           <div class="d-flex justify-space-between align-center">
             <div>
-              <div class="text-h4">
+              <div class="text-h4 text-grey-darken-1">
                 البطاقات / <span class="text-primary">المعايير</span>
               </div>
               <p>جميع المعايير الخاصة بجميع الجهات</p>
