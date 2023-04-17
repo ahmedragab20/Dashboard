@@ -20,6 +20,11 @@ const routes = [
         name: "standards",
         component: () => import("@/views/Standards/index.vue"),
       },
+      {
+        path: "/credits/questions",
+        name: "questions",
+        component: () => import("@/views/Questions/index.vue"),
+      },
     ],
   },
   {
