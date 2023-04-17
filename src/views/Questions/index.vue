@@ -99,7 +99,7 @@
                 <div class="d-flex align-center">
                   <v-progress-circular
                     class="mx-3"
-                    :size="50"
+                    :size="60"
                     :width="5"
                     :model-value="item.grade"
                     :color="complationRateColor(item.grade)"
@@ -114,14 +114,21 @@
                 </div>
                 <v-spacer></v-spacer>
                 <span
-                  class="d-flex align-center py-6 px-5"
+                  class="d-flex align-center py-5 pr-2"
                   style="
                     max-height: 18px;
                     gap: 5px;
                     background-color: lightblue;
                   "
                 >
-                  <v-badge small color="success"></v-badge>
+                  <!-- <v-badge
+                    style="font-size: 5px"
+                    small
+                    
+                  ></v-badge> -->
+                  <v-icon class="pa-0" color="success"
+                    >mdi-circle-medium</v-icon
+                  >
                   <span class="ma-1">{{ item.status }}</span>
                   <v-icon color="error" style="transform: rotate(45deg)"
                     >mdi-paperclip</v-icon
@@ -141,7 +148,7 @@ import { ref } from "vue";
 
 const Items = ref([
   {
-    rate: 1.3,
+    rate: 3.3,
     ques: "  الى اى مدى يجب ان تكون كلمة المرور معقدة ؟",
     ans: "يجب الا تكون كلمه عاديةو ويجب ان تتضمن مجموعة من الاحرف والارقام والرموز الخاصة فى الدورات التدريبيه التى نقدمها نعلم المتدربيين حيلا بسيطة لانشاء كلمات مرور ذكية يسهل تذكرها",
     status: "تم الإجابة",
