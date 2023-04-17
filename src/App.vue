@@ -8,7 +8,7 @@
 
 <script setup>
 import { isAuth } from "@/composables/useAuth";
-import { onBeforeMount } from "vue";
+import { onBeforeMount, onMounted } from "vue";
 import { useRouter } from "vue-router";
 
 const { loggedIn } = isAuth();
@@ -21,6 +21,15 @@ onBeforeMount(() => {
   // } else {
   //   router.push({ name: "login" });
   // }
+});
+onMounted(() => {
+  // const navigation_drawer__scrim = document.querySelectorAll(
+  //   ".v-navigation-drawer__scrim"
+  // );
+  // navigation_drawer__scrim.forEach((element) => {
+  //   // element.removeAttribute("style")
+  //   element.style.inset = "0px";
+  // });
 });
 </script>
 <style>

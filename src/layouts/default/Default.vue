@@ -1,47 +1,37 @@
 <template>
-  <v-app>
-    <!-- Drawer -->
-    <v-navigation-drawer v-model="drawer">
-      <!-- close drawer -->
-      <v-btn icon @click="drawer = false" variant="flat" rounded>
-        <v-icon>mdi-close</v-icon>
-      </v-btn>
-      <br />
-      <v-btn color="primary" @click="toggleTheme"> toggle theme</v-btn>
-      <v-btn color="primary" variant="outlined" to="/dummy/blank">
-        go to dummy
-      </v-btn>
-      <v-btn color="primary" variant="outlined" to="/credits">
-        go to credits
-      </v-btn>
-    </v-navigation-drawer>
-    <!-- ToolBar -->
+  <v-locale-provider rtl>
+    <v-app>
+      <!-- Drawer -->
+      <v-navigation-drawer v-model="drawer" location="right">
+        <SideBar />
+      </v-navigation-drawer>
+      <!-- ToolBar -->
 
-    <v-app-bar elevation="0">
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar elevation="0">
+        <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+        <Header />
+      </v-app-bar>
 
-      <Header />
-    </v-app-bar>
-
-    <!-- Content -->
-    <v-card flat rounded="0" class="bg-transparent mt-7">
-      <default-view />
-    </v-card>
-
-    <!-- Footer -->
-    <v-footer elevation="0" class="bg-transparent d-flex justify-end" border>
-      <v-card flat rounded="0" class="bg-transparent">
-        <v-card-text class="text-end">
-          <v-btn icon @click="toggleTheme" variant="outlined">
-            <v-icon>mdi-lightbulb</v-icon>
-          </v-btn>
-          <div id="chat-bot">
-            <Chat />
-          </div>
-        </v-card-text>
+      <!-- Content -->
+      <v-card flat rounded="0" class="bg-transparent mt-7">
+        <default-view />
       </v-card>
-    </v-footer>
-  </v-app>
+
+      <!-- Footer -->
+      <v-footer elevation="0" class="bg-transparent d-flex justify-end" border>
+        <v-card flat rounded="0" class="bg-transparent">
+          <v-card-text class="text-end">
+            <v-btn icon @click="toggleTheme" variant="outlined">
+              <v-icon>mdi-lightbulb</v-icon>
+            </v-btn>
+            <div id="chat-bot">
+              <Chat />
+            </div>
+          </v-card-text>
+        </v-card>
+      </v-footer>
+    </v-app>
+  </v-locale-provider>
 </template>
 
 <script setup>
@@ -49,12 +39,16 @@ import DefaultView from "@/layouts/default/View.vue";
 import Header from "@/components/App/Header.vue";
 import { dashboard } from "@/locals/ar-KSA";
 import { onMounted, ref } from "vue";
-import { useTheme } from "vuetify";
+import { useTheme, useRtl } from "vuetify";
 import Chat from "@/components/App/Chat.vue";
+import SideBar from "@/components/App/SideBar.vue";
 
-const drawer = ref(false);
+const drawer = ref(true);
 
 const theme = useTheme();
+
+const rtl = useRtl();
+console.log(rtl);
 
 const toggleTheme = () => {
   theme.global.name.value = theme.global.current.value.dark ? "light" : "dark";
@@ -65,6 +59,6 @@ const log = (theme) => {
 };
 
 onMounted(() => {
-  theme.global.name.value = "dark";
+  // theme.global.name.value = "dark";
 });
 </script>

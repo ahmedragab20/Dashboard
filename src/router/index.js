@@ -15,6 +15,16 @@ const routes = [
         name: "credits",
         component: () => import("@/views/Credits/index.vue"),
       },
+      {
+        path: "/credits/standards",
+        name: "standards",
+        component: () => import("@/views/Standards/index.vue"),
+      },
+      {
+        path: "/credits/questions",
+        name: "questions",
+        component: () => import("@/views/Questions/index.vue"),
+      },
     ],
   },
   {
